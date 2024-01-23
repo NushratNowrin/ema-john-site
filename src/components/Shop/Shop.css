@@ -5,7 +5,7 @@
 }
 
 .products-container {
-	margin: 50px;
+	margin: 20px 40px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 45px;
@@ -15,9 +15,9 @@
 }
 .btn-proceed {
 	background: #ff9900;
-	width: 90%;
-	height: 56px;
-	font-size: 21px;
+	width: 100%;
+
+	font-size: 16px;
 	margin: 10px auto;
 	border-radius: 4px;
 	color: white;

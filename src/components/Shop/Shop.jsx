@@ -12,6 +12,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const Shop = () => {
 	const [products, setProducts] = useState([]);
 	const [cart, setCart] = useState([]);
+	const [query, setQuery] = useState("");
 	// const cart = useLoaderData();
 	const [currentPage, setCurrentPage] = useState(0);
 	const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -112,22 +113,49 @@ const Shop = () => {
 	};
 
 	return (
-		<div className='shop-container'>
-			<div className='products-container'>
-				{products.map((product) => (
-					<Product
-						key={product._id}
-						product={product}
-						handleAddToCart={handleAddToCart}></Product>
-				))}
+		<div className='mt-[100px]'>
+			<div className='grid grid-cols-5 gap-5'>
+				<div className='col-span-4'>
+					<div className='text-center'>
+						<h2 className='text-lg font-bold text-black '>
+							Search which you need
+						</h2>
+						<form>
+							<div>
+								<input
+									type='search'
+									name='search'
+									id='search'
+									placeholder='Search by product name'
+									className='input input-bordered my-3 p-3 border-2 rounded-lg'
+									onChange={(event) =>
+										setQuery(event.target.value.toLowerCase())
+									}
+								/>
+							</div>
+						</form>
+					</div>
+					<div className='products-container grid grid-cols-3 justify-between items-center gap-5'>
+						{products
+							.filter((product) => product.name.toLowerCase().includes(query))
+							.map((product) => (
+								<Product
+									key={product._id}
+									product={product}
+									handleAddToCart={handleAddToCart}></Product>
+							))}
+					</div>
+				</div>
+
+				<div className='cart-container w-[20vw] h-[100vh] fixed right-0 top-[80px]'>
+					<Cart cart={cart} handleClearCart={handleClearCart}>
+						<Link className='proceed-link' to='/orders'>
+							<button className='btn-proceed'>Review Order</button>
+						</Link>
+					</Cart>
+				</div>
 			</div>
-			<div className='cart-container'>
-				<Cart cart={cart} handleClearCart={handleClearCart}>
-					<Link className='proceed-link' to='/orders'>
-						<button className='btn-proceed'>Review Order</button>
-					</Link>
-				</Cart>
-			</div>
+
 			<div className='pagination'>
 				<p>Current page: {currentPage}</p>
 				<button onClick={handlePrevPage}>Prev</button>
