@@ -127,7 +127,7 @@ const Shop = () => {
 									name='search'
 									id='search'
 									placeholder='Search by product name'
-									className='input input-bordered my-3 p-3 border-2 rounded-lg'
+									className=' my-3 p-3 border-2 rounded-lg'
 									onChange={(event) =>
 										setQuery(event.target.value.toLowerCase())
 									}

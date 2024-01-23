@@ -1,0 +1,17 @@
+.form-control {
+	padding: 8px 0;
+}
+.form-control {
+	width: 100%;
+}
+.label-text {
+	font-weight: 600;
+}
+.input-bordered {
+	border: 1px solid black;
+	border-radius: 8px;
+}
+.input {
+	padding: 10px;
+	width: 100%;
+}
